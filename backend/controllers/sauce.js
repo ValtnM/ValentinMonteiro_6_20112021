@@ -28,7 +28,16 @@ exports.createSauce = (req, res, next) => {
     });
     sauce.save()
         .then(() => res.status(201).json({ message: 'Sauce ajoutée !'}))
-        .catch(error => res.status(400).json({error}));
+        .catch(() => {
+            res.status(400).json({message: "Echec lors de la création de la sauce : données saisies incorrectes."});
+            fs.unlink(`images/${req.file.filename}`, (error) => {
+                if(error){
+                    console.log("Echec de suppression de l'image : " + error);
+                } else {
+                    console.log("Image supprimée avec succès !");
+                };
+            });
+        });
 }
 
 exports.modifySauce = (req, res, next) => {
