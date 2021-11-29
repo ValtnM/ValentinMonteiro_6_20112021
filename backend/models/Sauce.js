@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
+
 const regexSauce = /^[a-z]/i;
 
 const sauceSchema = mongoose.Schema({
