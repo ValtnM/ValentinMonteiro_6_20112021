@@ -1,5 +1,7 @@
 const passwordValidator = require('../models/Password');
 
+
+// Vérification de la solidité mot de passe choisi par l'utilisateur
 module.exports = (req, res, next) => {
     try {
         const password = req.body.password;

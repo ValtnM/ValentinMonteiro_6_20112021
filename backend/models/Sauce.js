@@ -2,8 +2,11 @@ const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
 
+// Création d'une expression régulière pour les différents champs du formulaire
 const regexSauce = /^[a-z]/i;
 
+
+// Création d'un modèle de Sauce
 const sauceSchema = mongoose.Schema({
     userId: { type: String, required: true},
     name: { type: String, required: true, unique: true, match: regexSauce},
@@ -18,6 +21,9 @@ const sauceSchema = mongoose.Schema({
     usersDisliked: { type: Array, required: true }
 });
 
+
+// Application du plugin "mongoose-unique-validator" sur le modèle
 sauceSchema.plugin(uniqueValidator);
+
 
 module.exports = mongoose.model('Sauce', sauceSchema);

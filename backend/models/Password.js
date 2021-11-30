@@ -1,5 +1,7 @@
 const passwordValidator = require('password-validator');
 
+
+// Création d'un modèle de mot de passe définissant les différentes contraintes à respecter
 const passwordSchema = new passwordValidator();
 
 passwordSchema
